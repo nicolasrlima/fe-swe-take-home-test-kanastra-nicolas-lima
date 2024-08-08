@@ -1,0 +1,55 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 100
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "ignore": [
+      ".gitignore",
+      ".github/**",
+      ".githooks/**",
+      "src/configs/pannellum/**",
+      "dist/**",
+      "src/routeTree.gen.ts"
+    ]
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "rules": {
+      "style": {
+        "noNonNullAssertion": "warn"
+      },
+      "suspicious": {
+        "noExplicitAny": "warn"
+      },
+      "a11y": {
+        "useKeyWithClickEvents": "off",
+        "noSvgWithoutTitle": "off",
+        "useButtonType": "warn",
+        "useMediaCaption": "off"
+      }
+    }
+  },
+  "vcs": {
+    "useIgnoreFile": true,
+    "defaultBranch": "master"
+  },
+  "overrides": [
+    {
+      "include": ["*.test.tsx", "*.spec.tsx"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noExplicitAny": "off"
+          }
+        }
+      }
+    }
+  ]
+}
