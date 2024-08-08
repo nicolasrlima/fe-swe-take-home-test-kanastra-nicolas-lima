@@ -7,16 +7,17 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "check": "biome check --changed --since=origin/main src/*",
-    "check:apply": "biome check --changed --since=origin/main src/* --apply",
-    "lint": "biome lint --changed --since=origin/main src/*",
-    "lint:apply": "biome lint --changed --since=origin/main src/* --apply",
     "format": "biome format --changed --since=origin/main",
-    "format:write": "biome format --changed --since=origin/main --write"
+    "format:write": "biome format --changed --since=origin/main --write",
+    "lint": "biome lint --changed --since=origin/main src/*",
+    "lint:write": "biome lint --changed --since=origin/main src/* --write",
+    "check": "biome check --changed --since=origin/main src/*",
+    "check:write": "biome check --changed --since=origin/main src/* --write"
   },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
