@@ -1,4 +1,5 @@
 import type React from "react";
+import { Button } from "../button";
 
 export type PaginationButtonProps = Omit<
   React.ComponentProps<"button">,
@@ -6,5 +7,5 @@ export type PaginationButtonProps = Omit<
 >;
 
 export const PaginationButton = (props: PaginationButtonProps) => {
-  return <button {...props} className="h-10 w-10" />;
+  return <Button {...props} />;
 };

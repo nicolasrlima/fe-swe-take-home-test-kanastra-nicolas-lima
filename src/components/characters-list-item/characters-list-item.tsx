@@ -8,7 +8,7 @@ export const CharactersListItem = ({
   thumbnail,
 }: CharactersListItemProps) => {
   return (
-    <li className="items-center h-16 p-2 bg-slate-200 rounded-lg justify-between grid grid-cols-[minmax(200px,_1fr)_minmax(200px,_1fr)_1fr_1fr] text-nowrap text-ellipsis gap-4 [&_span]:overflow-hidden [&_span]:text-ellipsis">
+    <li className="items-center h-16 p-2 border-slate-200 border-solid border-2 rounded-lg justify-between grid grid-cols-[minmax(200px,_1fr)_minmax(200px,_1fr)_1fr_1fr] text-nowrap text-ellipsis gap-4 [&_span]:overflow-hidden [&_span]:text-ellipsis">
       <div className="flex gap-1 items-center">
         <img src={thumbnail} alt={title} className="h-10 w-10 rounded-full" />
         <span className="font-semibold " title={title}>

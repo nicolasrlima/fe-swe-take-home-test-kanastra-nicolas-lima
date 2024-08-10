@@ -10,16 +10,18 @@ function App() {
   return (
     <main>
       <section className="p-6">
-        <h1 className="text-red-300">Marvel Characters</h1>
-        <CharactersList index={pageIndex} />
+        <h1 className="text-2xl font-bold mb-5">Marvel Characters</h1>
+        <div className="flex flex-col gap-4">
+          <CharactersList index={pageIndex} />
 
-        <Pagination
-          total={total}
-          current={pageIndex}
-          onPrev={() => setPageIndex(pageIndex - 1)}
-          onNext={() => setPageIndex(pageIndex + 1)}
-          onChange={(page) => setPageIndex(page)}
-        />
+          <Pagination
+            total={total}
+            current={pageIndex + 1}
+            onPrev={() => setPageIndex(pageIndex - 1)}
+            onNext={() => setPageIndex(pageIndex + 1)}
+            onChange={(page) => setPageIndex(page)}
+          />
+        </div>
       </section>
     </main>
   );

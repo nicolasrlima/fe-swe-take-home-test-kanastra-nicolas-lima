@@ -18,7 +18,13 @@ export default defineConfig({
     coverage: {
       reporter: ["text", "json", "html"],
       include: ["src/**/*"],
-      exclude: ["**/*.spec.*", "**/__tests__/**"],
+      exclude: [
+        "**/*.spec.*",
+        "**/__tests__/**",
+        "src/types/**",
+        "**/*.d.*",
+        "**/*.types.*",
+      ],
     },
   },
 });

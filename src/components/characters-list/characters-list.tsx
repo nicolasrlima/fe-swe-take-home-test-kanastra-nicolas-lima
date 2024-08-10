@@ -9,7 +9,6 @@ export const CharactersList = ({ index }: CharactersListProps) => {
     <>
       {isLoading && <p>Loading...</p>}
       {isError && <p>Something went wrong</p>}
-      {characters && <span>Characters loaded check console</span>}
       <ul className="flex flex-col gap-2">
         {characters?.map((character) => (
           <CharactersListItem
