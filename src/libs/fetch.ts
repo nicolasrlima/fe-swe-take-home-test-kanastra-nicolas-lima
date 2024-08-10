@@ -10,5 +10,5 @@ export default async function fetcher<JSON = unknown>(
     ? `&apikey=${PUBLIC_KEY}`
     : `?apikey=${PUBLIC_KEY}`;
   const res = await fetch(`${BASE_URL}${input}${apiKeyQueryParam}`, init);
-  return res.json().then((data) => data.data.results);
+  return res.json().then((data) => data.data);
 }

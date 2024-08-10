@@ -51,3 +51,11 @@ export type Character = {
   events: EventList;
   series: SeriesList;
 };
+
+export type CharacterResponseData = {
+  count: number;
+  limit: number;
+  offset: number;
+  results: Array<Character>;
+  total: number;
+};

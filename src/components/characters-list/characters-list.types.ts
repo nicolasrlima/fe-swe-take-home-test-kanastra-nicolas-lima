@@ -1,1 +1,3 @@
-export type CharactersListProps = React.HTMLAttributes<HTMLUListElement>;
+export type CharactersListProps = {
+  index: number;
+};
