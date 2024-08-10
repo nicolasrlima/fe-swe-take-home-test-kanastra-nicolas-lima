@@ -1,3 +1,5 @@
+import type { Character } from "@/types/characters";
+
 export type CharactersListProps = {
-  index: number;
+  characters?: Array<Character>;
 };

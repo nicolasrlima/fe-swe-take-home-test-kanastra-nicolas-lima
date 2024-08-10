@@ -2,7 +2,7 @@ import { cn, tv } from "@/libs/utils";
 import type { ButtonProps } from "./button.types";
 
 export const buttonVariants = tv({
-  base: "px-4 py-2 rounded-md",
+  base: "px-4 py-2 rounded-md h-10 disabled:opacity-50 disabled:cursor-not-allowed",
   variants: {
     variant: {
       filled: "bg-blue-500 text-white",
