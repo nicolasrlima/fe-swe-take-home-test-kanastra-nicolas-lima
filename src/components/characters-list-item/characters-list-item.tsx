@@ -1,32 +1,23 @@
 import type { CharactersListItemProps } from "./characters-list-item.types";
 
 export const CharactersListItem = ({
-  comicsAvailable,
-  seriesAvailable,
-  storiesAvailable,
   title,
   thumbnail,
+  onClick,
 }: CharactersListItemProps) => {
   return (
-    <li className="items-center h-16 p-2 border-slate-200 border-solid border-2 rounded-lg justify-between grid grid-cols-[minmax(200px,_1fr)_minmax(200px,_1fr)_1fr_1fr] text-nowrap text-ellipsis gap-4 [&_span]:overflow-hidden [&_span]:text-ellipsis">
-      <div className="flex gap-1 items-center">
-        <img src={thumbnail} alt={title} className="h-10 w-10 rounded-full" />
-        <span className="font-semibold " title={title}>
-          {title}
-        </span>
-      </div>
-      <span className="text-sm text-gray-600">
-        Comics |{" "}
-        <span className="text-gray-800 font-semibold">{comicsAvailable}</span>
+    <button
+      className="border-slate-200 border-solid border-[2px] shadow-md rounded-lg h-fit flex flex-col hover:border-blue-500 focus-visible:border-blue-500 outline-none w-32"
+      type="button"
+      onClick={onClick}
+    >
+      <img src={thumbnail} alt={title} className="h-32 w-full rounded-t-md" />
+      <span
+        className="font-semibold p-2 w-full text-ellipsis text-nowrap overflow-hidden"
+        title={title}
+      >
+        {title}
       </span>
-      <span className="text-sm text-gray-600">
-        Series |{" "}
-        <span className="text-gray-800 font-semibold">{seriesAvailable}</span>
-      </span>
-      <span className="text-sm text-gray-600">
-        Stories |{" "}
-        <span className="text-gray-800 font-semibold">{storiesAvailable}</span>
-      </span>
-    </li>
+    </button>
   );
 };

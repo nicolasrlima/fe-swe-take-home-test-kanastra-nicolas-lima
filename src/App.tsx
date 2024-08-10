@@ -48,7 +48,10 @@ function App() {
         <div className="flex flex-col gap-4">
           {isLoading && <p>Loading...</p>}
           {isError && <p>Something went wrong</p>}
-          <CharactersList characters={characters} />
+          <CharactersList
+            characters={characters}
+            onClickCharacter={console.log}
+          />
 
           <Pagination
             total={pagesTotal}
