@@ -52,7 +52,11 @@ export const Pagination = ({
       className={cn("w-full flex items-center box-border gap-6", className)}
       {...props}
     >
-      <PaginationButton onClick={() => onPrev?.()} disabled={!onPrev}>
+      <PaginationButton
+        name="Previous"
+        onClick={() => onPrev?.()}
+        disabled={!onPrev}
+      >
         Previous
       </PaginationButton>
       <div className="flex gap-[1px]">
@@ -82,7 +86,11 @@ export const Pagination = ({
           </Fragment>
         ))}
       </div>
-      <PaginationButton onClick={() => onNext?.()} disabled={!onNext}>
+      <PaginationButton
+        name="Next"
+        onClick={() => onNext?.()}
+        disabled={!onNext}
+      >
         Next
       </PaginationButton>
     </nav>
