@@ -1,34 +1,32 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { CharactersList } from "./components/characters-list";
+import { CharactersListItem } from "./components/characters-list-item";
+import { useCharacters } from "./hooks/useCharacters";
+import { getThumbnailUrl } from "./utils/strings";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { isError, isLoading, characters } = useCharacters();
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <main>
+      <section className="p-6">
+        <h1 className="text-red-300">Marvel Characters</h1>
+        {isLoading && <p>Loading...</p>}
+        {isError && <p>Something went wrong</p>}
+        {characters && <span>Characters loaded check console</span>}
+        <CharactersList>
+          {characters?.map((character) => (
+            <CharactersListItem
+              key={character.id}
+              title={character.name}
+              thumbnail={getThumbnailUrl(character.thumbnail)}
+              comicsAvailable={character.comics.available}
+              seriesAvailable={character.series.available}
+              storiesAvailable={character.stories.available}
+            />
+          ))}
+        </CharactersList>
+      </section>
+    </main>
   );
 }
 
