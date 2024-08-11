@@ -29,8 +29,8 @@ export const SeriesCombobox = ({ onSelect }: SeriesComboboxProps) => {
       onChange={(value) => handleComboboxChange(value)}
     >
       <ComboboxInput<Series>
+        id="series"
         className="border border-gray-300 p-2 rounded-md"
-        aria-label="Assignee"
         displayValue={(series) => series?.title}
         onChange={(event) => setQuery(event.target.value)}
       />

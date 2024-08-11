@@ -87,7 +87,10 @@ function App() {
           </Button>
         </div>
       </form>
-      <SeriesCombobox onSelect={onSeriesSelect} />
+      <div className="flex flex-col mb-4 w-fit gap-1">
+        <label htmlFor="series">Filter by series:</label>
+        <SeriesCombobox onSelect={onSeriesSelect} />
+      </div>
 
       <div className="flex flex-col gap-4">
         {isLoading && <p>Loading...</p>}
