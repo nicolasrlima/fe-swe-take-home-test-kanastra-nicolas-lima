@@ -3,7 +3,8 @@ import { CharactersList } from "@/components/characters-list";
 import { Input } from "@/components/input";
 import { Layout } from "@/components/layout";
 import { Pagination } from "@/components/pagination";
-import { DEFAULT_LIMIT, useCharacters } from "@/hooks/useCharacters";
+import { SeriesCombobox } from "@/components/series-combobox";
+import { useCharacters } from "@/hooks/useCharacters";
 import { Route as CharactersRoute } from "@/routes/characters";
 import type { Character } from "@/types/characters";
 import { useNavigate } from "@tanstack/react-router";
@@ -13,13 +14,13 @@ function App() {
   const navigate = useNavigate({
     from: CharactersRoute.fullPath,
   });
-  const { page, name } = CharactersRoute.useSearch();
+  const { page, name, series } = CharactersRoute.useSearch();
   const pageNumber = page ? page : 1;
-  const { characters, isError, isLoading, pagesTotal } = useCharacters(
-    pageNumber - 1,
-    DEFAULT_LIMIT,
-    name
-  );
+  const { characters, isError, isLoading, pagesTotal } = useCharacters({
+    page: pageNumber - 1,
+    name,
+    series,
+  });
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     const formData = new FormData(event.currentTarget);
@@ -27,8 +28,9 @@ function App() {
     const name = formData.get("search") as string;
     navigate({
       search: {
-        page: 1,
         name: name || undefined,
+        page: 1,
+        series,
       },
     });
   };
@@ -42,10 +44,22 @@ function App() {
     });
   };
 
-  const handlePageUpdate = (page: number) => {
+  const handlePageUpdate = (newPage: number) => {
     navigate({
       search: {
-        page,
+        name,
+        page: newPage,
+        series,
+      },
+    });
+  };
+
+  const onSeriesSelect = (seriesId: number | null) => {
+    navigate({
+      search: {
+        name,
+        page: 1,
+        series: seriesId ?? undefined,
       },
     });
   };
@@ -57,6 +71,7 @@ function App() {
         <label htmlFor="search">Search by name:</label>
         <div className="flex gap-1">
           <Input
+            defaultValue={name}
             disabled={isLoading || isError}
             id="search"
             type="text"
@@ -72,6 +87,8 @@ function App() {
           </Button>
         </div>
       </form>
+      <SeriesCombobox onSelect={onSeriesSelect} />
+
       <div className="flex flex-col gap-4">
         {isLoading && <p>Loading...</p>}
         {isError && <p>Something went wrong</p>}

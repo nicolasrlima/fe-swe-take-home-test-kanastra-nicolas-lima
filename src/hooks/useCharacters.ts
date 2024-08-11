@@ -5,16 +5,18 @@ import fetcher from "../libs/fetch";
 export const DEFAULT_LIMIT = 20;
 const DEFAULT_OFFSET = 0;
 
-export function useCharacters(
-  page = 0,
-  limit = DEFAULT_LIMIT,
-  search?: string
-) {
+export function useCharacters(params: {
+  page?: number;
+  limit?: number;
+  name?: string;
+  series?: number;
+}) {
+  const { page = 0, limit = DEFAULT_LIMIT, name, series } = params;
   const offset = page * limit || DEFAULT_OFFSET;
   const { data, error, isLoading } = useSWR<CharacterResponseData>(
     `/public/characters?limit=${limit}&offset=${offset}${
-      search ? `&nameStartsWith=${search}` : ""
-    }`,
+      name ? `&nameStartsWith=${name}` : ""
+    }${series ? `&series=${series}` : ""}`,
     fetcher
   );
 

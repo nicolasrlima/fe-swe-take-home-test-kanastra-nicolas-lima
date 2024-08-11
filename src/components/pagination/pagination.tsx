@@ -50,7 +50,7 @@ export const Pagination = ({
   return (
     <nav
       className={cn(
-        "w-full flex items-center box-border gap-6 justify-between",
+        "w-full flex items-center box-border gap-6 justify-center",
         className
       )}
       {...props}
