@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
+    "test:ui": "vitest --coverage --ui",
     "format": "biome format --changed --since=origin/main",
     "format:write": "biome format --changed --since=origin/main --write",
     "lint": "biome lint --changed --since=origin/main src/*",
