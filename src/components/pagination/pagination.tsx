@@ -9,6 +9,8 @@ export type PaginationProps = Omit<
   "onChange"
 > & {
   current?: number;
+  prevLabel?: string;
+  nextLabel?: string;
   total?: number;
   onChange?: (page: number) => void;
   onNext?: () => void;
@@ -19,6 +21,8 @@ export const Pagination = ({
   children,
   className,
   current = 0,
+  nextLabel = "Next",
+  prevLabel = "Previous",
   total = 0,
   onChange,
   onNext,
@@ -60,7 +64,7 @@ export const Pagination = ({
         onClick={() => onPrev?.()}
         disabled={!onPrev}
       >
-        Previous
+        {prevLabel}
       </PaginationButton>
       <div className="gap-[1px] hidden sm:flex">
         {numbers.map((number, index) => (
@@ -94,7 +98,7 @@ export const Pagination = ({
         onClick={() => onNext?.()}
         disabled={!onNext}
       >
-        Next
+        {nextLabel}
       </PaginationButton>
     </nav>
   );

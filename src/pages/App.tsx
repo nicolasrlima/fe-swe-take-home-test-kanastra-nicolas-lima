@@ -10,9 +10,11 @@ import { useCharacters } from "@/hooks/useCharacters";
 import { Route as CharactersRoute } from "@/routes/characters";
 import type { Character } from "@/types/characters";
 import { useNavigate } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { mutate } from "swr";
 
 function App() {
+  const { t } = useTranslation();
   const navigate = useNavigate({
     from: CharactersRoute.fullPath,
   });
@@ -74,9 +76,8 @@ function App() {
 
   return (
     <Layout>
-      <h1 className="text-2xl font-bold mb-5">Marvel Characters</h1>
       <form className="flex flex-col gap-2 mb-3 w-fit" onSubmit={handleSearch}>
-        <label htmlFor="search">Search by name:</label>
+        <label htmlFor="search">{t("home.searchByName")}:</label>
         <div className="flex gap-1">
           <Input
             defaultValue={name}
@@ -91,40 +92,44 @@ function App() {
             type="submit"
             variant="outline"
           >
-            Search
+            {t("home.search")}
           </Button>
         </div>
       </form>
       <div className="flex flex-col mb-4 w-fit gap-1">
-        <label htmlFor="series">Filter by series:</label>
+        <label htmlFor="series">{t("home.filterBySeries")}:</label>
         <SeriesCombobox onSelect={onSeriesSelect} />
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="h-96 w-96">
-          {charactersComicsFormatted && (
+        {charactersComicsFormatted && (
+          <div className="h-96 w-96">
             <ComicsChart
               data={{
                 id: "comics",
                 children: charactersComicsFormatted,
               }}
             />
-          )}
-        </div>
-        {isLoading && <p>Loading...</p>}
-        {isError && <p>Something went wrong</p>}
+          </div>
+        )}
+        {isLoading && <p>{t("home.loading")}</p>}
+        {isError && <p>{t("home.error")}</p>}
         <CharactersList
           characters={characters}
           onClickCharacter={handleCharacterClick}
         />
 
-        <Pagination
-          total={pagesTotal}
-          current={page}
-          onPrev={() => handlePageUpdate(pageNumber - 1)}
-          onNext={() => handlePageUpdate(pageNumber + 1)}
-          onChange={(page) => handlePageUpdate(page)}
-        />
+        {characters?.length && (
+          <Pagination
+            prevLabel={t("home.previous")}
+            nextLabel={t("home.next")}
+            total={pagesTotal}
+            current={page}
+            onPrev={() => handlePageUpdate(pageNumber - 1)}
+            onNext={() => handlePageUpdate(pageNumber + 1)}
+            onChange={(page) => handlePageUpdate(page)}
+          />
+        )}
       </div>
     </Layout>
   );

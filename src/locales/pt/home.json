@@ -1,0 +1,10 @@
+{
+  "title": "Personagens Marvel",
+  "searchByName": "Buscar pelo nome",
+  "search": "Buscar",
+  "filterBySeries": "Filtrar por séries",
+  "previous": "Anterior",
+  "next": "Próximo",
+  "loading": "Carregando...",
+  "error": "Algo deu errado ao carregar os personagens"
+}

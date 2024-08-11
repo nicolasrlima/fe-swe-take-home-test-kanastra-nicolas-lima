@@ -1,0 +1,10 @@
+{
+  "title": "Marvel Characters",
+  "searchByName": "Search by name",
+  "search": "Search",
+  "filterBySeries": "Filter by series",
+  "previous": "Previous",
+  "next": "Next",
+  "loading": "Loading...",
+  "error": "Something went wrong"
+}

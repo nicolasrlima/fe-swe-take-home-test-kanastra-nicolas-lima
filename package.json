@@ -22,8 +22,10 @@
     "@nivo/core": "^0.87.0",
     "@tanstack/react-router": "^1.47.1",
     "clsx": "^2.1.1",
+    "i18next": "^23.12.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-i18next": "^15.0.1",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.4.0",
     "tailwind-variants": "^0.2.1"
