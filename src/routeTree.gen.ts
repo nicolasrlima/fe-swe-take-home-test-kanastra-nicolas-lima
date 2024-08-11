@@ -13,27 +13,44 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as CharactersIndexImport } from './routes/characters/index'
 
 // Create Virtual Routes
 
-const IndexLazyImport = createFileRoute('/')()
+const CharactersCharacterIdLazyImport = createFileRoute(
+  '/characters/$characterId',
+)()
 
 // Create/Update Routes
 
-const IndexLazyRoute = IndexLazyImport.update({
-  path: '/',
+const CharactersIndexRoute = CharactersIndexImport.update({
+  path: '/characters/',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+} as any)
+
+const CharactersCharacterIdLazyRoute = CharactersCharacterIdLazyImport.update({
+  path: '/characters/$characterId',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/characters/$characterId.lazy').then((d) => d.Route),
+)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexLazyImport
+    '/characters/$characterId': {
+      id: '/characters/$characterId'
+      path: '/characters/$characterId'
+      fullPath: '/characters/$characterId'
+      preLoaderRoute: typeof CharactersCharacterIdLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/characters/': {
+      id: '/characters/'
+      path: '/characters'
+      fullPath: '/characters'
+      preLoaderRoute: typeof CharactersIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -41,7 +58,10 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ IndexLazyRoute })
+export const routeTree = rootRoute.addChildren({
+  CharactersCharacterIdLazyRoute,
+  CharactersIndexRoute,
+})
 
 /* prettier-ignore-end */
 
@@ -51,11 +71,15 @@ export const routeTree = rootRoute.addChildren({ IndexLazyRoute })
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/characters/$characterId",
+        "/characters/"
       ]
     },
-    "/": {
-      "filePath": "index.lazy.tsx"
+    "/characters/$characterId": {
+      "filePath": "characters/$characterId.lazy.tsx"
+    },
+    "/characters/": {
+      "filePath": "characters/index.tsx"
     }
   }
 }

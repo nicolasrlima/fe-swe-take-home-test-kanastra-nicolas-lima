@@ -5,8 +5,9 @@ export const buttonVariants = tv({
   base: "px-4 py-2 rounded-md h-10 disabled:opacity-50 disabled:cursor-not-allowed",
   variants: {
     variant: {
-      filled: "bg-blue-500 text-white",
-      outline: "border-solid border-[1px] border-blue-500 text-blue-500",
+      filled: "bg-blue-500 text-white hover:bg-blue-600",
+      outline:
+        "border-solid border-[1px] border-blue-500 text-blue-500 hover:bg-gray-100",
     },
   },
   defaultVariants: {

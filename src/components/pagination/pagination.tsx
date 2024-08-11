@@ -62,7 +62,7 @@ export const Pagination = ({
       >
         Previous
       </PaginationButton>
-      <div className="flex gap-[1px]">
+      <div className="gap-[1px] hidden sm:flex">
         {numbers.map((number, index) => (
           <Fragment key={`pagination-${number}-${total}`}>
             {total > ITEMS_COUNT &&
