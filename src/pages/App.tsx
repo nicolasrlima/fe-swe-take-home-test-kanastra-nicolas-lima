@@ -1,5 +1,7 @@
 import { Button } from "@/components/button";
 import { CharactersList } from "@/components/characters-list";
+import { ComicsChart } from "@/components/comics-chart";
+import type { ChartData } from "@/components/comics-chart/comics-chart.types";
 import { Input } from "@/components/input";
 import { Layout } from "@/components/layout";
 import { Pagination } from "@/components/pagination";
@@ -64,6 +66,12 @@ function App() {
     });
   };
 
+  const charactersComicsFormatted: Array<ChartData> | undefined =
+    characters?.map((character) => ({
+      id: character.name,
+      value: character.comics.available,
+    }));
+
   return (
     <Layout>
       <h1 className="text-2xl font-bold mb-5">Marvel Characters</h1>
@@ -93,6 +101,16 @@ function App() {
       </div>
 
       <div className="flex flex-col gap-4">
+        <div className="h-96 w-96">
+          {charactersComicsFormatted && (
+            <ComicsChart
+              data={{
+                id: "comics",
+                children: charactersComicsFormatted,
+              }}
+            />
+          )}
+        </div>
         {isLoading && <p>Loading...</p>}
         {isError && <p>Something went wrong</p>}
         <CharactersList
