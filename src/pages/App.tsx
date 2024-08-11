@@ -5,7 +5,7 @@ import { Layout } from "@/components/layout";
 import { Pagination } from "@/components/pagination";
 import { DEFAULT_LIMIT, useCharacters } from "@/hooks/useCharacters";
 import { Route as CharactersRoute } from "@/routes/characters";
-import type { Character, CharacterResponseData } from "@/types/characters";
+import type { Character } from "@/types/characters";
 import { useNavigate } from "@tanstack/react-router";
 import { mutate } from "swr";
 

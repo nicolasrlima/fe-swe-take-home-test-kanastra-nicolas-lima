@@ -13,7 +13,7 @@ const Character = ({ characterId }: CharacterProps) => {
       <Button className="mb-4" variant="outline" onClick={() => history.back()}>
         Back
       </Button>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && !character && <p>Loading...</p>}
       {isError && <p>Error loading character</p>}
       {character && (
         <div className="flex flex-col gap-4">
