@@ -103,7 +103,7 @@ function App() {
 
       <div className="flex flex-col gap-4">
         {charactersComicsFormatted && (
-          <div className="sm:h-96 sm:w-96 h-40 w-40">
+          <div className="sm:h-96 sm:w-96 h-40 w-40 self-center">
             <ComicsChart
               data={{
                 id: "comics",

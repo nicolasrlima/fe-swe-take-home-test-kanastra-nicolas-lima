@@ -1,4 +1,4 @@
-import App from "@/pages/App";
+import CharacterList from "@/pages/character-list";
 import { createFileRoute } from "@tanstack/react-router";
 
 type CharactersSearch = {
@@ -8,7 +8,7 @@ type CharactersSearch = {
 };
 
 export const Route = createFileRoute("/characters/")({
-  component: App,
+  component: CharacterList,
   validateSearch: (search: Record<string, unknown>): CharactersSearch => {
     return {
       page: Number(search?.page ?? 1),
