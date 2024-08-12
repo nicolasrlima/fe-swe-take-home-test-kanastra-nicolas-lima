@@ -1,4 +1,4 @@
-import type { Thumbnail } from "@/types/characters";
+import type { Thumbnail } from "@/types/global";
 import { describe, expect, it } from "vitest";
 import { getThumbnailUrl } from "../strings";
 
